@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect}  from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -9,7 +9,7 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import SortIcon from '@mui/icons-material/Sort';
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import React, {useState, useEffect}  from "react";
+
 
 const styles = {
   root: {
@@ -45,7 +45,7 @@ export default function FilterMoviesCard(props) {
   
     const handleChange = (e, type, value) => {
       e.preventDefault()
-      // Completed later
+      props.onUserInput(type, value) 
     };
   
     const handleTextChange = e => {
