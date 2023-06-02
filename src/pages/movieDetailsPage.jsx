@@ -20,7 +20,7 @@ const MoviePage = (props) => {
     const { id } = useParams();
     const [movie, setMovie] = useState(null);
     const [images, setImages] = useState([]);
-  
+   
     useEffect(() => {
         getMovie(id).then((movie) => {
           setMovie(movie);
