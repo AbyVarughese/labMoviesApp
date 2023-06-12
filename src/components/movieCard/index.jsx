@@ -14,6 +14,7 @@ import img from "../../images/film-poster-placeholder.png";
 import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
 const styles = {
   card: { maxWidth: 345 },
@@ -33,6 +34,14 @@ export default function MovieCard({ movie, action }) {
     movie.favourite = false;
   }
 
+  const { mustWatch, addToMustWatch } = useContext(MoviesContext);
+
+  if (mustWatch.find((id) => id === movie.id)) {
+    movie.mustWatch = true;
+  } else {
+    movie.mustWatch = false;
+  }
+
   return (
     <Card sx={styles.card}>
       <CardHeader
@@ -42,7 +51,13 @@ export default function MovieCard({ movie, action }) {
             <Avatar sx={styles.avatar}>
               <FavoriteIcon />
             </Avatar>
-          ) : null
+          ) :
+          movie.mustWatch ? (
+            <Avatar sx={styles.avatar}>
+              <PlaylistAddIcon />
+            </Avatar>
+          ) :null
+          
         }
         title={
           <Typography variant="h5" component="p">
