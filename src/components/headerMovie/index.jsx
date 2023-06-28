@@ -23,7 +23,7 @@ const styles = {
 
 const MovieHeader = (props) => {
   const movie = props.movie;
-  const favourites = JSON.parse(localStorage.getItem("favourites"));
+  const favourites = JSON.parse(localStorage.getItem("favourites")) ?? [];
   let fav = false;
   favourites.forEach((m) => {
     if (m.id == movie.id) {
