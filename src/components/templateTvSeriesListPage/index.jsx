@@ -17,7 +17,7 @@ const styles = {
   },
 };
 
-function TvSeriesListPageTemplate({ series, name, action }) {
+function TvSeriesListPageTemplate({ series, title, action }) {
   const [titleFilter, setTitleFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -41,33 +41,12 @@ function TvSeriesListPageTemplate({ series, name, action }) {
    <>
       <Grid container sx={styles.root}>
         <Grid item xs={12}>
-          <Header title={name} />
+          <Header title={title} />
         </Grid>
         <Grid item container spacing={5}>
           <TvSeriesList action={action} series={series} />
         </Grid>
       </Grid>
-      {/*
-      <Fab
-        color="secondary"
-        variant="extended"
-        onClick={() => setDrawerOpen(true)}
-        sx={styles.fab}
-      >
-        Filter
-      </Fab>
-      <Drawer
-        anchor="left"
-        open={drawerOpen}
-        onClose={() => setDrawerOpen(false)}
-      >
-        <FilterCard
-          onUserInput={handleChange}
-          titleFilter={titleFilter}
-          genreFilter={genreFilter}
-        />
-      </Drawer>
-      */}
     </>  
   );
 }

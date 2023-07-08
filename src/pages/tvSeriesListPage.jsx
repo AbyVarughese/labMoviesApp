@@ -6,7 +6,7 @@ import Spinner from "../components/spinner";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 
 const TvSeriesListPage = () => {
-  const { data, error, isLoading, isError } = useQuery("discover", getTvSeries);
+  const { data, error, isLoading, isError } = useQuery("discovertv", getTvSeries);
 
   if (isLoading) {
     return <Spinner />;
