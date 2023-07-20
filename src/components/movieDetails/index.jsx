@@ -10,6 +10,9 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews";
+import { getMovieCredits } from "../../api/tmdb-api";
+import { useQuery } from "react-query";
+import { Grid } from "@mui/material";
 
 const styles = {
   chipSet: {
@@ -33,6 +36,14 @@ const styles = {
 
 const MovieDetails = ({ movie }) => {
   const [drawerOpen, setDrawerOpen] = useState(false); // New
+
+  const { data: credits, error, isLoading, isError } = useQuery(
+    ["moviecredits", { id: movie.id }],
+    getMovieCredits
+  );
+
+  const cast = credits.cast ?? [];
+  
 
   return (
     <>
@@ -94,8 +105,28 @@ const MovieDetails = ({ movie }) => {
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
       >
-        <MovieReviews movie={movie} />
+      <MovieReviews movie={movie} />
       </Drawer>
+      <Typography variant="h5" component="h3">
+        <br/>
+        Cast
+      </Typography>
+      <Grid container spacing={2}>
+      {cast.map((member) => (
+        <Grid item xs={3}>
+          <a href={`/actors/${member.id}`}>{member.name}</a>
+          <br/>
+          <img
+                    src={`https://image.tmdb.org/t/p/w92${member.profile_path}`}
+                    alt={member.name}
+                  />
+
+          <br/>
+          {member.character}
+        </Grid>
+      ))}
+
+      </Grid>
     </>
   );
 };
