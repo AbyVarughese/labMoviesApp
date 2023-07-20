@@ -114,7 +114,7 @@ const MovieDetails = ({ movie }) => {
       <Grid container spacing={2}>
       {cast.map((member) => (
         <Grid item xs={3}>
-          <a href={`/actors/${member.id}`}>{member.name}</a>
+          <a href={`/actors/${member.id}`}>{member.name}
           <br/>
           <img
                     src={`https://image.tmdb.org/t/p/w92${member.profile_path}`}
@@ -122,6 +122,7 @@ const MovieDetails = ({ movie }) => {
                   />
 
           <br/>
+          </a>
           {member.character}
         </Grid>
       ))}
