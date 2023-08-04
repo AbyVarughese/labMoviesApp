@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
 import Avatar from "@mui/material/Avatar";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useNavigate } from "react-router-dom";
 
 const styles = {
   root: {
@@ -30,9 +31,11 @@ const MovieHeader = (props) => {
       fav = true;
     }
   });
+  const navigate = useNavigate();
+
   return (
     <Paper component="div" sx={styles.root}>
-      <IconButton aria-label="go back">
+      <IconButton aria-label="go back" onClick={() => navigate(-1)}>
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
 
