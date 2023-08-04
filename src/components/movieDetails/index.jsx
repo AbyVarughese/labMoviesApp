@@ -42,7 +42,7 @@ const MovieDetails = ({ movie }) => {
     getMovieCredits
   );
 
-  const cast = credits.cast ?? [];
+  const cast = (credits || {cast: []}).cast;
   
 
   return (
@@ -112,7 +112,8 @@ const MovieDetails = ({ movie }) => {
         Cast
       </Typography>
       <Grid container spacing={2}>
-      {cast.map((member) => (
+      {
+      cast.map((member) => (
         <Grid item xs={3}>
           <a href={`/actors/${member.id}`}>{member.name}
           <br/>
