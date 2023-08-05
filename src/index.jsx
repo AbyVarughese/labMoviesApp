@@ -14,6 +14,7 @@ import AddMovieReviewPage from './pages/addMovieReviewPage'
 import TvSeriesListPage from "./pages/tvSeriesListPage";
 import TvSeriesDetailsPage from "./pages/tvSeriesDetailsPage";
 import ActorDetailsPage from "./pages/actorDetailsPage";
+import MyMovieDetailsPage from "./pages/myMovieDetailsPage";
 
 
 
@@ -44,6 +45,7 @@ const App = () => {
         <Route path="/tv" element={<TvSeriesListPage />} />
         <Route path="/tv/:id" element={<TvSeriesDetailsPage />} />
         <Route path="/actors/:id" element={<ActorDetailsPage />} />
+        <Route path="/movies/my" element={<MyMovieDetailsPage />} />
       </Routes>
       </MoviesContextProvider>
     </BrowserRouter>
